@@ -47,7 +47,7 @@ AuthorSchema.virtual("lifespan").get(function () {
     }
     return findDifferenceInDates(this.date_of_birth, new Date())
   }
-  return 'Unknown'
+  return '???'
 });
 
 // Export model
@@ -64,16 +64,8 @@ function findDifferenceInDates(earlierDate, laterDate){
    
   // Calculating the no. of days between
   // two dates
-  let Difference_In_Years =
-      Math.round
-          (Difference_In_Time *10 / (1000 * 3600 * 24 * 365))/10;
-   
-  // To display the final no. of days (result)
-  console.log
-      ("Total number of days between dates:\n" +
-          earlierDate.toDateString() + " and " +
-          laterDate.toDateString() +
-          " is: " + Difference_In_Years + " years");
+  let Difference_In_Years = Difference_In_Time / (1000 * 3600 * 24 * 365);
+  let rounded_difference_in_years = Math.round(Difference_In_Years * 10) /10 //rounded to the first decimal
 
-  return Difference_In_Years
+  return rounded_difference_in_years
 }
