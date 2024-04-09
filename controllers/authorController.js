@@ -25,6 +25,7 @@ exports.author_detail = asyncHandler(async (req, res, next) => {
     err.status = 404;
     return next(err);
   }
+  console.log(typeof(author.date_of_birth))
 
   res.render("author_detail", {
     title: "Author Detail",

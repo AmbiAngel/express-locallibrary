@@ -38,5 +38,42 @@ AuthorSchema.virtual("date_of_death_formatted").get(function () {
   return this.date_of_death ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) : 'alive'
 });
 
+AuthorSchema.virtual("lifespan").get(function () {
+  // const dob = this.date_of_birth ? DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED) : 'unknown'
+  // const dod = this.date_of_death ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) : 'alive'
+  if(typeof(this.date_of_birth) === 'object'){
+    if(typeof(this.date_of_death) === 'object'){
+      return findDifferenceInDates(this.date_of_birth, this.date_of_death)
+    }
+    return findDifferenceInDates(this.date_of_birth, new Date())
+  }
+  return 'Unknown'
+});
+
 // Export model
 module.exports = mongoose.model("Author", AuthorSchema);
+
+function findDifferenceInDates(earlierDate, laterDate){
+  // let earlierDate = new Date("01/16/2024");
+  // let laterDate = new Date("01/26/2024");
+   
+  // Calculating the time difference
+  // of two dates
+  let Difference_In_Time =
+      laterDate.getTime() - earlierDate.getTime();
+   
+  // Calculating the no. of days between
+  // two dates
+  let Difference_In_Years =
+      Math.round
+          (Difference_In_Time *10 / (1000 * 3600 * 24 * 365))/10;
+   
+  // To display the final no. of days (result)
+  console.log
+      ("Total number of days between dates:\n" +
+          earlierDate.toDateString() + " and " +
+          laterDate.toDateString() +
+          " is: " + Difference_In_Years + " years");
+
+  return Difference_In_Years
+}
