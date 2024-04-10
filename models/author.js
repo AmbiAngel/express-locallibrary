@@ -54,15 +54,13 @@ AuthorSchema.virtual("lifespan").get(function () {
 module.exports = mongoose.model("Author", AuthorSchema);
 
 function findDifferenceInDates(earlierDate, laterDate){
-  // let earlierDate = new Date("01/16/2024");
-  // let laterDate = new Date("01/26/2024");
    
   // Calculating the time difference
   // of two dates
   let Difference_In_Time =
       laterDate.getTime() - earlierDate.getTime();
    
-  // Calculating the no. of days between
+  // Calculating the no. of years between
   // two dates
   let Difference_In_Years = Difference_In_Time / (1000 * 3600 * 24 * 365);
   let rounded_difference_in_years = Math.round(Difference_In_Years * 10) /10 //rounded to the first decimal
