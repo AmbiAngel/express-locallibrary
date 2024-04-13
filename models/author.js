@@ -41,8 +41,8 @@ AuthorSchema.virtual("date_of_death_formatted").get(function () {
 AuthorSchema.virtual("lifespan").get(function () {
   // const dob = this.date_of_birth ? DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED) : 'unknown'
   // const dod = this.date_of_death ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) : 'alive'
-  if(typeof(this.date_of_birth) === 'object'){
-    if(typeof(this.date_of_death) === 'object'){
+  if(this.date_of_birth){
+    if(this.date_of_death){
       return findDifferenceInDates(this.date_of_birth, this.date_of_death)
     }
     return findDifferenceInDates(this.date_of_birth, new Date())
@@ -55,6 +55,9 @@ module.exports = mongoose.model("Author", AuthorSchema);
 
 function findDifferenceInDates(earlierDate, laterDate){
    
+  if(!laterDate || !earlierDate){
+    return 'unknown'
+  }
   // Calculating the time difference
   // of two dates
   let Difference_In_Time =

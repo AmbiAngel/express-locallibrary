@@ -79,6 +79,8 @@ exports.author_create_post = [
       date_of_birth: req.body.date_of_birth,
       date_of_death: req.body.date_of_death,
     });
+    author.date_of_birth || delete author.date_of_birth 
+    author.date_of_death || delete author.date_of_death 
 
     if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values/errors messages.
