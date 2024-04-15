@@ -136,6 +136,7 @@ exports.bookinstance_update_get = asyncHandler(async (req, res, next) => {
   ])
 
   res.render('bookinstance_form',{
+    title: "Update BookInstance",
     bookinstance:bookInstance,
     book_list:bookList,
     selected_book: bookInstance.book
@@ -176,7 +177,7 @@ exports.bookinstance_update_post = [
         const allBooks = await Book.find({}, "title").sort({ title: 1 }).exec();
   
         res.render("bookinstance_form", {
-          title: "Create BookInstance",
+          title: "Update BookInstance",
           book_list: allBooks,
           selected_book: bookInstance.book._id,
           errors: errors.array(),
