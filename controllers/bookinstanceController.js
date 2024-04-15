@@ -130,7 +130,11 @@ exports.bookinstance_delete_post = asyncHandler(async (req, res, next) => {
 
 // Display BookInstance update form on GET.
 exports.bookinstance_update_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: BookInstance update GET");
+  const bookInstance = await BookInstance.findById(req.params.id)
+
+  res.render('bookinstance_form',{
+    bookinstance:bookInstance
+  })
 });
 
 // Handle bookinstance update on POST.
