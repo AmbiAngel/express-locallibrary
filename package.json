@@ -1,6 +1,7 @@
 {
   "name": "express-locallibrary",
   "version": "0.0.0",
+  "engines":{"node":">=v20.11.1"},
   "private": true,
   "scripts": {
     "start": "node --env-file=.env ./bin/www",
