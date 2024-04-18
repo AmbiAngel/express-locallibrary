@@ -1,7 +1,9 @@
 {
   "name": "express-locallibrary",
   "version": "0.0.0",
-  "engines":{"node":">=v20.11.1"},
+  "engines": {
+    "node": ">=v20.11.1"
+  },
   "private": true,
   "scripts": {
     "start": "node --env-file=.env ./bin/www",
@@ -9,6 +11,7 @@
     "serverstart": "DEBUG=express-locallibrary-tutorial:* npm run devstart"
   },
   "dependencies": {
+    "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.19.1",
