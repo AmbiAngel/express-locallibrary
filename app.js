@@ -10,6 +10,9 @@ const catalogRouter = require("./routes/catalog"); //Import routes for "catalog"
 
 var app = express();
 
+// Pull environmental variables
+require('dotenv').config()
+
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
